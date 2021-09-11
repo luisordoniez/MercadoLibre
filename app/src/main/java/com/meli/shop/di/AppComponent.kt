@@ -2,6 +2,7 @@ package com.meli.shop.di
 
 import android.app.Application
 import com.meli.shop.App
+import com.meli.shop.api.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -14,7 +15,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        AndroidInjectionModule::class
+        AndroidInjectionModule::class,
+        NetworkModule::class
         /*modules de la app*/]
 )
 interface AppComponent {
