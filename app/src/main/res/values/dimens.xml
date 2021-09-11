@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="welcome_logo_size">200dp</dimen>
+
+    <!-- search -->
+    <dimen name="radius">8dp</dimen>
+    <dimen name="border">1dp</dimen>
+
+    <!-- item products -->
+    <dimen name="cardCornerRadius">5dp</dimen>
+    <dimen name="cardElevation">4dp</dimen>
+
+    <!-- poster products -->
+    <dimen name="width_poster">150dp</dimen>
+    <dimen name="height_poster">150dp</dimen>
+
+
+</resources>
