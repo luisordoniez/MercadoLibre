@@ -1,4 +1,4 @@
-package com.meli.shop.features.main
+package com.meli.shop.features.main.ui
 
 import androidx.lifecycle.ViewModel
 

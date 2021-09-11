@@ -11,8 +11,6 @@
     <dimen name="cardElevation">4dp</dimen>
 
     <!-- poster products -->
-    <dimen name="width_poster">150dp</dimen>
-    <dimen name="height_poster">150dp</dimen>
-
-
+    <dimen name="width_poster">130dp</dimen>
+    <dimen name="height_poster">130dp</dimen>
 </resources>

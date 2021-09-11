@@ -6,7 +6,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".features.main.MainFragment">
+tools:context=".features.main.ui.MainFragment">
 
 <androidx.cardview.widget.CardView
     android:id="@+id/textInputLayoutSearch"
@@ -82,7 +82,9 @@ tools:context=".features.main.MainFragment">
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingBottom="50dp"
+        android:paddingBottom="20dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

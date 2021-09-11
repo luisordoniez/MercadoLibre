@@ -1,4 +1,4 @@
-package com.meli.shop.features.main
+package com.meli.shop.features.main.ui
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.meli.shop.databinding.MainFragmentBinding
+import com.meli.shop.features.main.data.Product
 
 class MainFragment : Fragment() {
 
@@ -14,6 +15,8 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewModel: MainViewModel
+
+    lateinit var mAdapter: ProductAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
@@ -23,6 +26,18 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        mAdapter = ProductAdapter(requireContext())
+        binding.recyclerViewSearchResults.adapter = mAdapter
+
+        val listMovies = mutableListOf<Product>()
+        listMovies.add(Product())
+        listMovies.add(Product())
+        listMovies.add(Product())
+        listMovies.add(Product())
+        listMovies.add(Product())
+        listMovies.add(Product())
+        mAdapter.setItems(listMovies)
     }
 
 }
