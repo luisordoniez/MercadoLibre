@@ -5,8 +5,5 @@ package com.meli.shop.data.api
  */
 
 object Endpoints {
-
-    const val BASE_URL = "https://api.mercadolibre.com/sites/MLA/"
-
     const val SEARCH = "search"
 }

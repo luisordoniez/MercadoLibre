@@ -15,12 +15,42 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+    }
+
+    flavorDimensions "ml"
+    productFlavors{
+        signed{
+            signingConfig signingConfigs.debug
+        }
+        unsigned {}
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            resValue "string", "app_name", "Meli Test"
+            minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String","BASE_URL", "definir url para servidor de produccion"
+        }
+
+        debug{
+            resValue "string", "app_name", "Meli Test-cer"
+            applicationIdSuffix ".cer"
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String","BASE_URL", "definir url para servidor de certificadion"
+        }
+
+        debugTest{
+            resValue "string", "app_name", "Meli Test-dev"
+            applicationIdSuffix ".dev"
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String","BASE_URL", "\"https://api.mercadolibre.com/sites/MLA/\""
         }
     }
 

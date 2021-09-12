@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Shop</string>
-
     <string name="search_products">Search Products</string>
     <string name="no_products">No products yet</string>
     <string name="no_results">No results</string>

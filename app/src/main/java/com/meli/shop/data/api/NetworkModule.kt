@@ -1,8 +1,8 @@
 package com.meli.shop.data.api
 
-import com.facebook.stetho.okhttp3.BuildConfig
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
+import com.meli.shop.BuildConfig
 import com.meli.shop.features.main.data.MainDataSource
 import dagger.Module
 import dagger.Provides
@@ -40,7 +40,7 @@ class NetworkModule {
 
     private fun createRetrofit(okHttpClient: OkHttpClient, converterFactory: GsonConverterFactory): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Endpoints.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .build()
