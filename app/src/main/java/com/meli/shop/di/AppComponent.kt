@@ -2,7 +2,7 @@ package com.meli.shop.di
 
 import android.app.Application
 import com.meli.shop.App
-import com.meli.shop.api.NetworkModule
+import com.meli.shop.data.api.NetworkModule
 import com.meli.shop.features.ContainerModule
 import com.meli.shop.features.main.MainModule
 import dagger.BindsInstance

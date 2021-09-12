@@ -2,6 +2,9 @@
 buildscript {
     ext.daggerVersion = '2.23.2'
     ext.navVersion = "2.3.5"
+    ext.coroutinesVersion = "1.3.5"
+    ext.lifecycleVersion = '2.2.0'
+    ext.stetho = '1.5.1'
 
     repositories {
         google()

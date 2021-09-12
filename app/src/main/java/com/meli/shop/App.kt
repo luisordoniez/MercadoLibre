@@ -3,9 +3,9 @@ package com.meli.shop
 import android.app.Activity
 import android.app.Application
 import com.meli.shop.di.AppInjector
-import com.meli.shop.di.DaggerAppComponent
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -20,5 +20,9 @@ class App  : Application(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
         AppInjector.init(this)
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 }

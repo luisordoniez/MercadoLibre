@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.meli.shop.R
 import com.meli.shop.databinding.ProductItemBinding
-import com.meli.shop.features.main.data.Product
+import com.meli.shop.features.main.data.entity.Product
 
 /**
  * Created by Luis Ordoñez on 11/09/2021.
