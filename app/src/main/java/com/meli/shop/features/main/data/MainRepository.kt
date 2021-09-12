@@ -9,6 +9,11 @@ import javax.inject.Singleton
  */
 
 @Singleton
-class MainRepository @Inject constructor(private val dataSource: MainDataSource) {
-    fun getProducts (value : String) = resultLiveData(networkCall = { dataSource.getProducts(value)})
+class MainRepository @Inject constructor(private val dao: ProductDao ,private val dataSource: MainDataSource) {
+//    fun getProducts (value : String) = resultLiveData(networkCall = { dataSource.getProducts(value)})
+    fun getProducts (value : String) = resultLiveData(
+        databaseQuery = { dao.getProducts(value) },
+        networkCall = { dataSource.getProducts(value) },
+        saveCallResult = { dao.insertAll(it.results) }
+    )
 }

@@ -68,9 +68,9 @@ class MainFragment : BaseFragment(), Injectable {
                 Result.Status.SUCCESS -> {
                     showProgressBar(false)
                     resultado.data?.let {
-                        Timber.tag("resultado del service").i(it.results.joinToString { it.title })
-                        mAdapter.setItems(it.results as MutableList)
-                        if (it.results.isEmpty()) binding.noProducts.visibility = View.VISIBLE
+                        Timber.tag("resultado del service").i(it.joinToString { it.title.toString() })
+                        mAdapter.setItems(it as MutableList)
+                        if (it.isEmpty()) binding.noProducts.visibility = View.VISIBLE
                         else binding.noProducts.visibility = View.GONE
                     }
                 }
