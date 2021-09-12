@@ -10,12 +10,11 @@ import com.meli.shop.data.Result
 import androidx.lifecycle.Observer
 import com.meli.shop.databinding.MainFragmentBinding
 import com.meli.shop.di.Injectable
-import com.meli.shop.features.main.data.entity.Product
-import dagger.android.support.DaggerFragment
+import com.meli.shop.features.BaseFragment
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainFragment : DaggerFragment(), Injectable {
+class MainFragment : BaseFragment(), Injectable {
 
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
@@ -37,30 +36,25 @@ class MainFragment : DaggerFragment(), Injectable {
         mAdapter = ProductAdapter(requireContext())
         binding.recyclerViewSearchResults.adapter = mAdapter
 
-        val listMovies = mutableListOf<Product>()
-        listMovies.add(Product())
-        listMovies.add(Product())
-        listMovies.add(Product())
-        listMovies.add(Product())
-        listMovies.add(Product())
-        listMovies.add(Product())
-        mAdapter.setItems(listMovies)
-
-        getCounters()
+        getProducts()
     }
 
-    private fun getCounters() {
+    private fun getProducts() {
         viewModel.getProducts("lego").observe(requireActivity(), Observer { resultado ->
             when (resultado.status) {
                 Result.Status.SUCCESS -> {
+                    showProgressBar(false)
                     resultado.data?.let {
                         Timber.tag("resultado del service").i(it.results.joinToString { it.title })
-                        Toast.makeText(context,"succsses", Toast.LENGTH_LONG).show()
+                        mAdapter.setItems(it.results as MutableList)
                     }
                 }
-                Result.Status.LOADING -> Timber.tag("loading").i("loading")
+                Result.Status.LOADING -> {
+                    showProgressBar(true)
+                    Timber.tag("loading").i("loading")
+                }
                 Result.Status.ERROR -> {
-                    Toast.makeText(context,resultado.message, Toast.LENGTH_LONG).show()
+                    showProgressBar(false)
                     Timber.tag("resultado del service").i(resultado.message)
                 }
             }
