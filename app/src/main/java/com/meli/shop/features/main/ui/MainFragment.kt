@@ -42,7 +42,14 @@ class MainFragment : BaseFragment(), Injectable {
 
         binding.editTextSearch.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                getProducts(binding.editTextSearch.text.toString())
+                binding.editTextSearch.clearFocus()
+                hideKeyboard()
+                if (binding.editTextSearch.text.toString().isNotEmpty()){
+                    getProducts(binding.editTextSearch.text.toString())
+                }else{
+                    viewModel.products.value = listOf()
+                }
+
                 return@OnEditorActionListener true
             }
             false
@@ -55,23 +62,26 @@ class MainFragment : BaseFragment(), Injectable {
 
         binding.imageClear.setOnClickListener {
             binding.editTextSearch.setText("")
-            getProducts(binding.editTextSearch.text.toString())
+            binding.editTextSearch.clearFocus()
+            viewModel.products.value = listOf()
+            hideKeyboard()
         }
+
+        viewModel.products.observe(requireActivity(), Observer {
+            mAdapter.setItems(it)
+            if (it.isEmpty()) binding.noProducts.visibility = View.VISIBLE
+            else binding.noProducts.visibility = View.GONE
+        })
     }
 
     private fun getProducts(value:String) {
-        binding.editTextSearch.clearFocus()
-        hideKeyboard()
-
         viewModel.getProducts(value).observe(requireActivity(), Observer { resultado ->
             when (resultado.status) {
                 Result.Status.SUCCESS -> {
                     showProgressBar(false)
                     resultado.data?.let {
                         Timber.tag("resultado del service").i(it.joinToString { it.title.toString() })
-                        mAdapter.setItems(it as MutableList)
-                        if (it.isEmpty()) binding.noProducts.visibility = View.VISIBLE
-                        else binding.noProducts.visibility = View.GONE
+                        viewModel.products.value = it
                     }
                 }
                 Result.Status.LOADING -> {

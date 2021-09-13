@@ -35,13 +35,14 @@ class ProductAdapter(private val mContext: Context): RecyclerView.Adapter<Produc
         }
     }
 
-    fun addItem(list: MutableList<Product>) {
+    fun addItem(list: List<Product>) {
         this.mProduct.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun setItems(mutableList: MutableList<Product>) {
-        this.mProduct = mutableList
+    fun setItems(list: List<Product>) {
+        this.mProduct.clear()
+        this.mProduct.addAll(list)
         notifyDataSetChanged()
     }
 
