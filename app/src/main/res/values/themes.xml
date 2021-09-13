@@ -19,4 +19,9 @@
         <item name="colorControlActivated">@color/orange</item>
         <item name="colorControlHighlight">@color/orange</item>
     </style>
+
+    <style name="myToolbar">
+        <item name="actionMenuTextColor">@color/orange</item>
+        <item name="android:actionMenuTextColor">@color/orange</item>
+    </style>
 </resources>

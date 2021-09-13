@@ -3,6 +3,7 @@ package com.meli.shop.features.main.data.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 @Entity(tableName = "product")
 data class Product(
@@ -77,4 +78,4 @@ data class Product(
     val title: String?,
     @field:SerializedName("use_thumbnail_id")
     val useThumbnailId: Boolean?
-)
+): Serializable
