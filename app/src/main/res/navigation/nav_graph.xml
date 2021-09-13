@@ -9,5 +9,14 @@
         android:id="@+id/splashFragment"
         android:name="com.meli.shop.features.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.meli.shop.features.main.ui.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" />
 </navigation>
