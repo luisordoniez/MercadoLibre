@@ -4,4 +4,6 @@
     <string name="no_results">No results</string>
 
     <string name="price">$ %s</string>
+    <string name="detail">Detalle</string>
+    <string name="share">Share</string>
 </resources>

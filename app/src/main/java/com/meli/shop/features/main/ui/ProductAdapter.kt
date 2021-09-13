@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.meli.shop.R
@@ -31,7 +31,8 @@ class ProductAdapter(private val mContext: Context): RecyclerView.Adapter<Produc
         holder.binding.condition.text = mProduct[position].condition
 
         holder.binding.cardView.setOnClickListener {
-            Toast.makeText(mContext, mProduct[position].title, Toast.LENGTH_SHORT).show()
+            val action = MainFragmentDirections.actionMainFragmentToDetailFragment(mProduct[position])
+            Navigation.findNavController(holder.binding.cardView).navigate(action)
         }
     }
 
