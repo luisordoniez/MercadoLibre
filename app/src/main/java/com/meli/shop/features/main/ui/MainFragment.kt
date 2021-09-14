@@ -1,5 +1,6 @@
 package com.meli.shop.features.main.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.meli.shop.data.Result
 import com.meli.shop.databinding.MainFragmentBinding
 import com.meli.shop.di.Injectable
